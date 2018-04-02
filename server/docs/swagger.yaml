@@ -1,0 +1,215 @@
+# this is an example of the Uber API
+# as a demonstration of an API spec in YAML
+swagger: '2.0'
+info:
+  title: Florence API
+  description: Florence API for creating issues
+  version: "1.0.0"
+# the domain of the service
+host: stefan.api
+# array of all schemes that your API supports
+schemes:
+  - https
+# will be prefixed to all paths
+basePath: /api/
+produces:
+  - application/json
+paths:
+  /issues/:
+    post:
+      summary: CREATE issue
+      description: |
+        Call endpoint creates Issue 
+      parameters:
+        - name: status
+          in: query
+          required: false
+          type: string
+      tags:
+        - ISSUES
+      responses:
+        201:
+          description: Single issue
+          schema:
+            type: string
+        400:
+          description: Invalid Status
+          schema:
+            type: string 
+        500:
+          description: Internal Server Error
+          schema:
+            type: string 
+            
+  /issues/:id:
+    get:
+      summary: GET specific issue by id
+      description: Call endpoint ID gets specific Issue 
+      parameters:
+        - name: id
+          in: query
+          description: Issue ID.
+          required: true
+          type: number
+        - name: status
+          in: query
+          description: Issue status.
+          type: string
+        - name: createdAt
+          in: query
+          description: Time of creation.
+          type: string
+        - name: text
+          in: query
+          description: strings array of text inputs.
+          type: string
+      tags:
+        - ISSUES
+      responses:
+        200:
+          description: Successful Status,
+          schema:
+            type: string
+        500:
+          description: Internal Server Error
+          schema:
+            type: string
+    patch:
+      summary: UPDATES specific issue by id
+      description: Call endpoint ID gets updates Issue 
+      parameters:
+        - name: id
+          in: query
+          description: Issue ID.
+          required: true
+          type: number
+        - name: status
+          in: query
+          description: Issue status.
+          type: string
+        - name: createdAt
+          in: query
+          description: Time of creation.
+          type: string
+        - name: text
+          in: query
+          description: strings array of text inputs.
+          type: string
+    
+      tags:
+        - ISSUES
+      responses:
+        200:
+          description: Successful Status,
+          schema:
+            type: string
+        500:
+          description: Internal Server Error
+          schema:
+            type: string
+    delete:
+      summary: DELETES specific issue
+      description: Call endpoint ID gets deletes Issue 
+      parameters:
+        - name: id
+          in: query
+          description: Issue ID.
+          required: true
+          type: number
+      tags:
+        - ISSUES
+      responses:
+        200:
+          description: Successful Status,
+          schema:
+            type: string
+        500:
+          description: Internal Server Error
+          schema:
+            type: string
+            
+  /issues/:issueId/text:
+    post:
+        summary: CREATE text for issue
+        description: Call endpoint creates text for specific issue 
+        parameters:
+          - name: id
+            in: query
+            required: true
+            type: number
+        tags:
+          - ISSUES/TEXT
+        responses:
+          201:
+            description: Single issue
+            schema:
+              type: string
+          400:
+            description: Invalid Status
+            schema:
+              type: string 
+          500:
+            description: Internal Server Error
+            schema:
+              type: string 
+    get:
+      summary: GET specific text by id
+      description: Call endpoint Issue id that text belongs to
+      parameters:
+        - name: issue Id
+          in: query
+          description: Object ID.
+          required: true
+          type: number
+      tags:
+        - ISSUES/TEXT
+      responses:
+        200:
+          description: Successful Status
+        500:
+          description: Internal Server Error
+          schema:
+            type: string
+            
+  /issues/:issuesId/files:
+    post:
+        summary: FILE upload
+        description: Uploads file for specific issue by issue ID
+        parameters:
+          - name: file
+            in: formData
+            required: true
+            type: string
+        tags:
+          - ISSUES/FILE
+        responses:
+          200:
+            description: Successful Status
+            schema:
+              type: string
+          500:
+            description: Internal Server Error
+            schema:
+              type: string
+              
+  /issues/:issuesId/files/:id:
+    get:
+        summary: FILE download
+        description: Downloads file for specific issue by issue ID and file Id / Binary file
+        parameters:
+          - name: file
+            in: formData
+            required: true
+            type: string
+        tags:
+          - ISSUES/FILE
+        responses:
+          200:
+            description: Successful Status
+            schema:
+              type: string
+          500:
+            description: Internal Server Error
+            schema:
+              type: string             
+ 
