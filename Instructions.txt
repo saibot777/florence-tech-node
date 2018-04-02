@@ -1,0 +1,7 @@
+
+Tools needed:
+
+Node - version 9.5.0 -- you can use Node Version Manager(nvm) to switch versions easily -- https://github.com/creationix/nvm
+Typescript - installation command: npm -g install typescript
+
+For Mongo I've used Mlab for simplicity

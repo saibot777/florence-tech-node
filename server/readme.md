@@ -1,9 +1,9 @@
-## Skeleton for Node.js applications written in TypeScript
+## Florence REST
 
-### Development
+### Development Server
 
 ```bash
-npm run dev
+npm run dev - http://localhost:3000/
 ```
 
 ### Running tests
@@ -12,14 +12,7 @@ npm run dev
 npm test
 ```
 
-### Linting
 
-```bash
-npm run lint
-```
+To read REST documentation paste the swagger.yaml to https://editor.swagger.io/ online editor
 
-### Building a container
-
-```bash
-docker build .
-```
+Tech Used: Node/Express, Typescript, Mongo with Mongoose...
